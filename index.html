@@ -212,9 +212,30 @@
             margin-left: 5px;
         }
 
+        /* --- TETAPAN UNTUK MOBILE (LALAI) --- */
         .nav-links {
             display: none;
-            gap: 2rem;
+        }
+
+        .nav-actions {
+            display: none; /* Tanpa !important supaya boleh diaktifkan di desktop */
+        }
+
+
+        /* --- TETAPAN UNTUK DESKTOP --- */
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                margin-left: auto; /* Tolak menu pautan ke sebelah kanan */
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-actions {
+                display: flex; /* Paparkan semula butang merah di desktop */
+                align-items: center;
+                margin-left: 1.5rem;
+            }
         }
 
         .nav-links a {
@@ -222,14 +243,12 @@
             color: var(--charcoal-light);
             transition: color 0.3s ease;
             font-size: 0.95rem;
+            text-align: center; 
+            display: block;     
         }
 
         .nav-links a:hover {
             color: var(--perodua-red);
-        }
-
-        .nav-actions {
-            display: none;
         }
 
         .mobile-menu-btn {
@@ -261,6 +280,8 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            align-items: center;  
+            text-align: center;   
         }
 
         .mobile-menu.active {
@@ -273,6 +294,8 @@
             display: block;
             padding: 0.5rem 0;
             border-bottom: 1px solid var(--border-color);
+            text-align: center; 
+            width: 100%;
         }
 
         .hero {
@@ -1383,7 +1406,7 @@
             </a>
             
             <nav class="nav-links">
-                <a href="#kenali">Kenali Haziq</a>
+                <a href="#kenali">Utama</a>
                 <a href="#model">Model Perodua</a>
                 <a href="#proses">Proses</a>
                 <a href="#faq">FAQ</a>
@@ -1409,7 +1432,7 @@
     </header>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#kenali" onclick="toggleMenu()">Kenali Haziq</a>
+        <a href="#kenali" onclick="toggleMenu()">Utama</a>
         <a href="#model" onclick="toggleMenu()">Model Perodua</a>
         <a href="#proses" onclick="toggleMenu()">Proses Pembelian</a>
         <a href="#pembiayaan" onclick="toggleMenu()">Info Pembiayaan</a>
@@ -1534,7 +1557,7 @@
                             <h3 class="model-name">Perodua Axia</h3>
                             <p class="model-desc">Pilihan kereta kompak yang menjimatkan bahan api, sesuai untuk kegunaan harian dan pemanduan di bandar.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 22,000*</strong>
                             </div>
                             <div class="model-actions">
@@ -1554,7 +1577,7 @@
                             <h3 class="model-name">Perodua Bezza</h3>
                             <p class="model-desc">Sedan praktikal dengan ruang but yang luas, sesuai untuk keluarga kecil atau pemanduan jarak jauh.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 34,580*</strong>
                             </div>
                             <div class="model-actions">
@@ -1574,7 +1597,7 @@
                             <h3 class="model-name">Perodua Myvi</h3>
                             <p class="model-desc">Hatchback serba guna yang dipercayai ramai, dilengkapi teknologi keselamatan moden untuk ketenangan minda.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 46,500*</strong>
                             </div>
                             <div class="model-actions">
@@ -1594,7 +1617,7 @@
                             <h3 class="model-name">Perodua Ativa</h3>
                             <p class="model-desc">SUV kompak berkuasa turbo yang bergaya, menawarkan kedudukan memandu yang lebih tinggi dan selesa.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 62,500*</strong>
                             </div>
                             <div class="model-actions">
@@ -1614,7 +1637,7 @@
                             <h3 class="model-name">Perodua Alza</h3>
                             <p class="model-desc">MPV keluarga dengan rekaan moden dan konfigurasi tempat duduk yang fleksibel untuk pelbagai kegunaan.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 62,500*</strong>
                             </div>
                             <div class="model-actions">
@@ -1634,7 +1657,7 @@
                             <h3 class="model-name">Perodua Aruz</h3>
                             <p class="model-desc">SUV lasak 7-tempat duduk yang luas, dibina khas untuk perjalanan yang lebih mencabar dan seisi keluarga.</p>
                             <div class="model-price">
-                                <span>Bermula Dari (Anggaran)</span>
+                                <span>Bermula Dari</span>
                                 <strong>RM 72,900*</strong>
                             </div>
                             <div class="model-actions">
@@ -1902,7 +1925,7 @@
                     <h4>Pautan Pantas</h4>
                     <div class="footer-links">
                         <a href="#home">Utama</a>
-                        <a href="#kenali">Kenali Haziq</a>
+                        <a href="#kenali">Utama</a>
                         <a href="#model">Model Perodua</a>
                         <a href="#proses">Proses Pembelian</a>
                         <a href="#borang">Borang Pertanyaan</a>
@@ -1955,7 +1978,7 @@
 
             <!-- Tajuk & Harga -->
             <h3 id="modalTitle" class="modal-title">Nama Kereta</h3>
-            <p id="modalPriceRange" class="modal-price">Harga Anggaran</p>
+            <p id="modalPriceRange" class="modal-price">Harga</p>
 
             <!-- Keterangan & Spesifikasi -->
             <p id="modalDesc" class="modal-desc"></p>
