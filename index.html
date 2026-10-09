@@ -1145,6 +1145,13 @@
             .hero-title {
                 font-size: 3.5rem;
             }
+
+            .nav-container .logo img {
+                height: 35px; /* Pelaras ketinggian logo */
+                width: auto;  /* Kekalkan nisbah logo */
+                display: inline-block;
+                vertical-align: middle;
+            }
         }
     </style>
 </head>
@@ -1152,7 +1159,10 @@
 
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">HAZIQ<span>Perodua</span></a>
+            <a href="#" class="logo flex items-center gap-2">
+                <img src="Perodua-Logo.png" alt="Perodua Logo" class="h-8 w-auto object-contain">
+                <span>HAZIQ <span class="text-perodua-red">Perodua</span></span>
+            </a>
             
             <nav class="nav-links">
                 <a href="#kenali">Kenali Haziq</a>
