@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haziq | Perunding Jualan Kereta Perodua</title>
+    <title>Haziq | Perunding Perodua Anda</title>
     <meta name="description" content="Dapatkan khidmat nasihat, semak harga, promosi terkini dan uruskan pembelian kereta Perodua anda dengan mudah bersama Haziq.">
     <meta name="keywords" content="Sales Advisor Perodua, Kereta Perodua, Harga kereta Perodua, Pilihan model Perodua, Pertanyaan kereta Perodua, Haziq Perodua">
     
     <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="Haziq | Perunding Jualan Kereta Perodua">
+    <meta property="og:title" content="Haziq | Perunding Perodua Anda">
     <meta property="og:description" content="Mudahkan urusan pembelian kereta Perodua anda bersama Haziq. Semak model, harga dan promosi.">
     <meta property="og:image" content="https://iintisarsolutions-gif.github.io/SA-Perodua/SA.png">
     <meta property="og:url" content="https://iintisarsolutions-gif.github.io/SA-Perodua/">
@@ -24,6 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Library untuk render & kawal model 3D interaktif -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <!-- Preload fail 3D supaya muat turun bermula lebih awal -->
+    <link rel="preload" href="myvi.glb" as="fetch" crossorigin="anonymous">
 
     <style>
         :root {
@@ -55,7 +60,7 @@
             --section-padding: 5rem 1.5rem;
             
             /* Global WA Number (JS will use this, but good to have note here) */
-            --wa-number: "011-61013502"; 
+            --wa-number: "601161013502"; 
         }
 
         *, *::before, *::after {
@@ -1146,11 +1151,224 @@
                 font-size: 3.5rem;
             }
 
+            .nav-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                z-index: 40; /* Pastikan header di lapisan atas tanpa menutupi kandungan scroll */
+            }
+
+            .nav-container .logo {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                width: auto; /* Pastikan lebar mengikut saiz kandungan sahaja */
+                height: auto;
+                pointer-events: auto;
+            }
+
             .nav-container .logo img {
-                height: 35px; /* Pelaras ketinggian logo */
-                width: auto;  /* Kekalkan nisbah logo */
-                display: inline-block;
-                vertical-align: middle;
+                height: 35px;
+                max-height: 35px;
+                width: auto;
+                display: block;
+                object-fit: contain;
+            }
+
+            /* --- CSS Kemas & Lengkap Untuk Modal Pop-up --- */
+            .hidden {
+                display: none !important;
+            }
+
+            #carModal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.65);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                box-sizing: border-box;
+            }
+
+            #carModal.hidden {
+                display: none !important;
+            }
+
+            /* Kotak Utama Modal */
+            .modal-content {
+                background-color: #ffffff;
+                border-radius: 20px;
+                max-width: 500px;
+                width: 100%;
+                padding: 24px;
+                position: relative;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+                box-sizing: border-box;
+                font-family: inherit;
+            }
+
+            /* Butang Tutup (X) */
+            .modal-close-btn {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                background: #f3f4f6;
+                border: none;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                font-size: 20px;
+                font-weight: bold;
+                color: #6b7280;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s;
+            }
+
+            .modal-close-btn:hover {
+                background: #e5e7eb;
+                color: #111827;
+            }
+
+            /* Tajuk & Harga */
+            .modal-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1f2937;
+                margin: 0 0 4px 0;
+            }
+
+            .modal-price {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: #ed1c24;
+                margin: 0 0 16px 0;
+            }
+
+            /* Penerangan */
+            .modal-desc {
+                font-size: 0.9rem;
+                color: #4b5563;
+                line-height: 1.5;
+                margin: 0 0 16px 0;
+            }
+
+            /* Kotak Spesifikasi */
+            .modal-specs-box {
+                background-color: #f9fafb;
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                padding: 16px;
+                margin-bottom: 20px;
+                max-height: 220px;
+                overflow-y: auto;
+            }
+
+            .modal-specs-box h4 {
+                margin: 0 0 10px 0;
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: #374151;
+            }
+
+            #modalSpecs {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #modalSpecs li {
+                font-size: 0.85rem;
+                color: #4b5563;
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+
+            /* Butang Tindakan Bawah */
+            .modal-actions {
+                display: flex;
+                gap: 12px;
+            }
+
+            .btn-modal-close {
+                flex: 1;
+                padding: 10px 16px;
+                border: 1px solid #d1d5db;
+                background: #ffffff;
+                color: #374151;
+                border-radius: 9999px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .btn-modal-close:hover {
+                background: #f3f4f6;
+            }
+
+            .btn-modal-wa {
+                flex: 1;
+                padding: 10px 16px;
+                border: none;
+                background: #ed1c24;
+                color: #ffffff;
+                border-radius: 9999px;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 4px 6px -1px rgba(237, 28, 36, 0.3);
+                transition: background 0.2s;
+            }
+
+            .btn-modal-wa:hover {
+                background: #c81018;
+            }
+
+            #modalSpecs li {
+                font-size: 0.875rem;
+                color: #374151;
+                margin-bottom: 10px;
+                line-height: 1.5;
+                position: relative;
+                padding-left: 18px; /* Ruang untuk dot merah */
+                list-style: none;
+            }
+
+            /* Bullet Dot Merah Perodua */
+            #modalSpecs li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 7px;
+                width: 7px;
+                height: 7px;
+                background-color: #ed1c24;
+                border-radius: 50%;
+            }
+
+            /* Animation untuk luncur masuk dari kanan */
+            @keyframes slideInFromRight {
+                0% {
+                    transform: translateX(100%); /* Bermula di luar skrin (sebelah kanan) */
+                    opacity: 0;                   /* Mula-mula tak nampak (transparent) */
+                }
+                100% {
+                    transform: translateX(0);    /* Masuk ke kedudukan asal */
+                    opacity: 1;                   /* Muncul sepenuhnya */
+                }
+            }
+
+            /* Terapkan animation pada wrapper kereta 3D */
+            .hero-image-wrapper {
+                animation: slideInFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             }
         }
     </style>
@@ -1159,9 +1377,9 @@
 
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo flex items-center gap-2">
-                <img src="Perodua-Logo.png" alt="Perodua Logo" class="h-8 w-auto object-contain">
-                <span>HAZIQ <span class="text-perodua-red">Perodua</span></span>
+            <a href="#top" class="logo flex items-center gap-2" style="text-decoration: none; display: inline-flex; align-items: center;">
+                <img src="Perodua-Logo.png" alt="Perodua Logo" style="height: 35px; width: auto; max-height: 35px; object-fit: contain;">
+                <span style="font-weight: bold; font-size: 1.125rem;">HAZIQ <span class="text-perodua-red" style="color: #ed1c24;">Perodua</span></span>
             </a>
             
             <nav class="nav-links">
@@ -1172,8 +1390,10 @@
             </nav>
             
             <div class="nav-actions">
-                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat untuk mengetahui lebih lanjut tentang kereta Perodua.')">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <button class="btn btn-primary" style="padding: 6px 14px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat untuk mengetahui lebih lanjut tentang kereta Perodua.')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
                     Tanya Haziq
                 </button>
             </div>
@@ -1226,8 +1446,18 @@
                 </div>
                 
                 <div class="hero-image-wrapper reveal">
-                    <!-- WAJIB GANTI: SA.png - Gunakan imej background transparent -->
-                    <img src="SA.png" alt="Haziq - Perodua Sales Advisor" class="sa-photo">
+                    <model-viewer 
+                        src="myvi.glb" 
+                        poster="poster.png"
+                        alt="Model 3D Perodua Myvi Biru"
+                        loading="eager"
+                        reveal="auto"
+                        auto-rotate 
+                        camera-controls 
+                        shadow-intensity="1.5"
+                        environment-image="neutral"
+                        style="width: 100%; height: 450px; background-color: transparent;">
+                    </model-viewer>
                 </div>
             </div>
         </section>
@@ -1298,7 +1528,6 @@
                     <div class="model-card reveal">
                         <div class="model-image-wrapper">
                             <div class="model-tag">Kompak</div>
-                            <!-- GANTI: Imej kereta sebenar -->
                             <img src="axia.jpeg" alt="Perodua Axia" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20AXIA%3C%2Ftext%3E%3C%2Fsvg%3E'">
                         </div>
                         <div class="model-info">
@@ -1306,11 +1535,11 @@
                             <p class="model-desc">Pilihan kereta kompak yang menjimatkan bahan api, sesuai untuk kegunaan harian dan pemanduan di bandar.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 22,000*
+                                <strong>RM 22,000*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Axia. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Axia. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('axia')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Axia. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1326,11 +1555,11 @@
                             <p class="model-desc">Sedan praktikal dengan ruang but yang luas, sesuai untuk keluarga kecil atau pemanduan jarak jauh.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 34,580*
+                                <strong>RM 34,580*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Bezza. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Bezza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('bezza')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Bezza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1346,11 +1575,11 @@
                             <p class="model-desc">Hatchback serba guna yang dipercayai ramai, dilengkapi teknologi keselamatan moden untuk ketenangan minda.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 46,500*
+                                <strong>RM 46,500*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Myvi. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Myvi. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('myvi')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Myvi. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1366,11 +1595,11 @@
                             <p class="model-desc">SUV kompak berkuasa turbo yang bergaya, menawarkan kedudukan memandu yang lebih tinggi dan selesa.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 62,500*
+                                <strong>RM 62,500*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Ativa. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Ativa. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('ativa')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Ativa. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1386,11 +1615,11 @@
                             <p class="model-desc">MPV keluarga dengan rekaan moden dan konfigurasi tempat duduk yang fleksibel untuk pelbagai kegunaan.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 62,500*
+                                <strong>RM 62,500*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Alza. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Alza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('alza')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Alza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1406,11 +1635,11 @@
                             <p class="model-desc">SUV lasak 7-tempat duduk yang luas, dibina khas untuk perjalanan yang lebih mencabar dan seisi keluarga.</p>
                             <div class="model-price">
                                 <span>Bermula Dari (Anggaran)</span>
-                                RM 72,900*
+                                <strong>RM 72,900*</strong>
                             </div>
                             <div class="model-actions">
-                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Aruz. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
-                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Aruz. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;" onclick="openModal('aruz')">Detail Harga</button>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 13px;" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Aruz. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
                             </div>
                         </div>
                     </div>
@@ -1719,21 +1948,176 @@
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <script>
-        // --- 1. CONFIGURATION ---
-        // GANTI NOMBOR INI KEPADA NOMBOR SEBENAR TANPA SIMBOL '+' ATAU SENGKANG. CONTOH: 60123456789
-        const waNumber = "60123456789"; 
+    <div id="carModal" class="hidden">
+        <div class="modal-content">
+            <!-- Butang Tutup (X) -->
+            <button type="button" onclick="closeModal()" class="modal-close-btn">&times;</button>
 
-        // --- 2. WHATSAPP HELPER ---
-        function openWA(message) {
-            const encodedMessage = encodeURIComponent(message);
-            const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-            window.open(url, '_blank');
+            <!-- Tajuk & Harga -->
+            <h3 id="modalTitle" class="modal-title">Nama Kereta</h3>
+            <p id="modalPriceRange" class="modal-price">Harga Anggaran</p>
+
+            <!-- Keterangan & Spesifikasi -->
+            <p id="modalDesc" class="modal-desc"></p>
+            
+            <div class="modal-specs-box">
+                <h4>Spesifikasi Utama:</h4>
+                <ul id="modalSpecs">
+                    <!-- Senarai spec akan dimasukkan melalui JavaScript -->
+                </ul>
+            </div>
+
+            <!-- Butang Tindakan -->
+            <div class="modal-actions">
+                <button type="button" onclick="closeModal()" class="btn-modal-close">Tutup</button>
+                <button type="button" id="modalWaBtn" class="btn-modal-wa">Minat? Tanya Haziq</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // --- 1. CONFIGURATION ---
+    const waNumber = "601161013502"; 
+
+    // Data spesifikasi kereta (Format Korporat & Kemas)
+    const carData = {
+        axia: {
+            name: "Perodua Axia",
+            price: "Dari RM22,000*",
+            desc: "Hatchback kompak terkemuka. Sesuai untuk pelajar, pengguna kereta pertama, pemanduan bandar, dan mereka yang mengutamakan penjimatan bahan api.",
+            specs: [
+                "<strong>Jenis Badan:</strong> Hatchback 5 Pintu",
+                "<strong>Kapasiti Enjin:</strong> 1.0L (1KR-VE, 998 cc, 3-Silinder VVT-i)",
+                "<strong>Kuasa & Tork:</strong> 50 kW (68 PS) @ 6,000 rpm | 91 Nm @ 4,400 rpm",
+                "<strong>Transmisi & Pacuan:</strong> D-CVT (Automatik) / Manual (Varian E) | Pacuan Roda Hadapan (FWD)",
+                "<strong>Kapasiti & Tangki:</strong> 5 Tempat Duduk | Tangki Minyak 36 Litre",
+                "<strong>Kecekapan Minyak:</strong> Sehingga 27.4 km/L (Ujian MDC)",
+                "<strong>Varian Utama:</strong> Axia E (M), G, X, SE, dan AV"
+            ]
+        },
+        bezza: {
+            name: "Perodua Bezza",
+            price: "Dari RM34,580*",
+            desc: "Sedan kompak praktikal. Sesuai untuk pengguna yang memerlukan ruang but luas, keluarga kecil, dan pemanduan harian yang ekonomikal.",
+            specs: [
+                "<strong>Jenis Badan:</strong> Sedan 4 Pintu",
+                "<strong>Pilihan Enjin:</strong> 1.0L (1KR-VE) / 1.3L (1NR-VE) Dual VVT-i",
+                "<strong>Kuasa & Tork:</strong> 1.0L (50 kW / 91 Nm) | 1.3L (70 kW / 121 Nm)",
+                "<strong>Transmisi & Pacuan:</strong> Manual 5-Kelajuan / Automatik 4-Kelajuan | FWD",
+                "<strong>Ruang But & Tangki:</strong> Kapasiti But 508 Liter | Tangki Minyak 36 Litre",
+                "<strong>Keselamatan Utama:</strong> ABS, EBD, VSC, TRC & ASA (Mengikut Varian)",
+                "<strong>Varian Utama:</strong> 1.0 G (M/A), 1.3 X (A), dan 1.3 AV (A)"
+            ]
+        },
+        myvi: {
+            name: "Perodua Myvi",
+            price: "Dari RM46,500*",
+            desc: "Hatchback ikonik pilihan ramai. Sesuai untuk pemanduan harian, pasangan muda, dan keluarga yang mahukan prestasi serta teknologi keselamatan canggih.",
+            specs: [
+                "<strong>Jenis Badan:</strong> Hatchback 5 Pintu",
+                "<strong>Pilihan Enjin:</strong> 1.3L (1NR-VE) / 1.5L (2NR-VE) Dual VVT-i",
+                "<strong>Kuasa & Tork:</strong> 1.3L (70 kW / 121 Nm) | 1.5L (76 kW / 137 Nm)",
+                "<strong>Transmisi & Pacuan:</strong> D-CVT (Generasi Baharu) | Pacuan Roda Hadapan (FWD)",
+                "<strong>Ruang & Kapasiti:</strong> 5 Tempat Duduk | Bagasi 277L | Tangki Minyak 36 Litre",
+                "<strong>Ciri Keselamatan:</strong> Lampu LED, Bantuan Keselamatan ASA & PSDA",
+                "<strong>Varian Utama:</strong> 1.3 G, 1.5 X, 1.5 H, dan 1.5 AV"
+            ]
+        },
+        ativa: {
+            name: "Perodua Ativa",
+            price: "Dari RM62,500*",
+            desc: "SUV kompak berkuasa turbo. Sesuai untuk pengguna yang mahukan posisi pemanduan tinggi, reka bentuk moden, dan ciri keselamatan terkini.",
+            specs: [
+                "<strong>Jenis Badan:</strong> SUV Kompak 5 Pintu",
+                "<strong>Kapasiti Enjin:</strong> 1.0L Turbocharged (1KR-VE Turbo, 998 cc)",
+                "<strong>Kuasa & Tork:</strong> 72 kW (98 PS) @ 6,000 rpm | 140 Nm @ 2,400–4,000 rpm",
+                "<strong>Transmisi & Pacuan:</strong> D-CVT 7-Kelajuan | Pacuan Roda Hadapan (FWD)",
+                "<strong>Dimensi & Ruang:</strong> Kelegaan Tanah 200 mm | Bagasi 303–369 Liter",
+                "<strong>Kecekapan Minyak:</strong> Sehingga 18.9 km/L",
+                "<strong>Varian Utama:</strong> 1.0 X, 1.0 H, dan 1.0 AV (6 Beg Udara & ASA Standard)"
+            ]
+        },
+        alza: {
+            name: "Perodua Alza",
+            price: "Dari RM62,500*",
+            desc: "MPV 7-tempat duduk serba moden. Sesuai untuk keluarga, ibu bapa, dan perjalan jauh dengan konfigurasi tempat duduk yang sangat fleksibel.",
+            specs: [
+                "<strong>Jenis Badan:</strong> MPV 7-Tempat Duduk",
+                "<strong>Kapasiti Enjin:</strong> 1.5L DOHC Dual VVT-i (2NR-VE, 1,496 cc)",
+                "<strong>Kuasa & Tork:</strong> 78 kW (106 PS) @ 6,000 rpm | 138 Nm @ 4,200 rpm",
+                "<strong>Transmisi & Pacuan:</strong> D-CVT | Pacuan Roda Hadapan (FWD)",
+                "<strong>Fleksibiliti Ruang:</strong> Bagasi 137L (Sehingga 498L apabila barisan ke-3 dilipat)",
+                "<strong>Kecekapan Minyak:</strong> Sehingga 22.0 km/L (Mod MDC)",
+                "<strong>Varian Utama:</strong> 1.5 X, 1.5 H, dan 1.5 AV"
+            ]
+        },
+        aruz: {
+            name: "Perodua Aruz",
+            price: "Dari RM72,900*",
+            desc: "SUV 7-tempat duduk lasak. Sesuai untuk keluarga yang mahukan jarak kelegaan tanah tinggi, gaya gagah, dan kualiti pemanduan pelbagai bentuk jalan.",
+            specs: [
+                "<strong>Jenis Badan:</strong> SUV 7-Tempat Duduk",
+                "<strong>Kapasiti Enjin:</strong> 1.5L DOHC Dual VVT-i (2NR-VE, 1,496 cc)",
+                "<strong>Kuasa & Tork:</strong> 75 kW (102 PS) @ 6,000 rpm | 133 Nm @ 4,200 rpm",
+                "<strong>Transmisi & Pacuan:</strong> Automatik 4-Kelajuan | Pacuan Roda Belakang (RWD)",
+                "<strong>Kelegaan Tanah:</strong> 220 mm | Tangki Minyak 45 Litre",
+                "<strong>Ciri Keselamatan:</strong> 6 Beg Udara, ASA 2.0, VSC, TRC & Hill-Start Assist",
+                "<strong>Varian Utama:</strong> 1.5 X dan 1.5 AV"
+            ]
+        }
+    };
+
+    // 2. Fungsi untuk membuka modal
+    function openModal(carKey) {
+        const car = carData[carKey.toLowerCase()];
+        if (!car) return;
+
+        const titleEl = document.getElementById('modalTitle');
+        const priceEl = document.getElementById('modalPriceRange');
+        const descEl = document.getElementById('modalDesc');
+        const specsList = document.getElementById('modalSpecs');
+        const waBtn = document.getElementById('modalWaBtn');
+        const modal = document.getElementById('carModal');
+
+        if (titleEl) titleEl.textContent = car.name;
+        if (priceEl) priceEl.textContent = car.price;
+        if (descEl) descEl.textContent = car.desc;
+
+        if (specsList) {
+            specsList.innerHTML = '';
+            car.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = spec; // Terus render tag <strong> dari data carData
+                specsList.appendChild(li);
+            });
         }
 
-        // --- 3. UI INTERACTIONS ---
-        // Sticky Header
-        const header = document.getElementById('header');
+        if (waBtn) {
+            waBtn.onclick = function() {
+                openWA(`Assalamualaikum Haziq, saya berminat untuk mengetahui lebih lanjut dan mendapatkan sebut harga untuk ${car.name}.`);
+            };
+        }
+
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    // 3. Fungsi untuk menutup modal
+    function closeModal() {
+        const modal = document.getElementById('carModal');
+        if (modal) modal.classList.add('hidden');
+    }
+
+    // --- 2. WHATSAPP HELPER ---
+    function openWA(message) {
+        const encodedMessage = encodeURIComponent(message);
+        const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+        window.open(url, '_blank');
+    }
+
+    // --- 3. UI INTERACTIONS ---
+    // Sticky Header
+    const header = document.getElementById('header');
+    if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1741,89 +2125,91 @@
                 header.classList.remove('scrolled');
             }
         });
+    }
 
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        function toggleMenu() {
-            mobileMenu.classList.toggle('active');
-        }
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggleMenu() {
+        if (mobileMenu) mobileMenu.classList.toggle('active');
+    }
 
-        // Current Year for Footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+    // Current Year for Footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // FAQ Accordion
-        function toggleFaq(button) {
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            
-            // Close all open FAQs (optional: remove this loop if you want multiple open at once)
-            document.querySelectorAll('.faq-question').forEach(btn => {
-                btn.setAttribute('aria-expanded', 'false');
-                btn.parentElement.classList.remove('active');
-                btn.nextElementSibling.style.maxHeight = null;
-            });
-
-            // Toggle current
-            if (!isExpanded) {
-                button.setAttribute('aria-expanded', 'true');
-                button.parentElement.classList.add('active');
-                const content = button.nextElementSibling;
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        }
-
-        // --- 4. FORM HANDLING ---
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent page reload
-            
-            const name = document.getElementById('fname').value;
-            const model = document.getElementById('fmodel').value;
-            const purpose = document.getElementById('fpurpose').value;
-            const notes = document.getElementById('fnotes').value;
-            
-            let message = `Assalamualaikum Haziq, saya ${name}.\n\n`;
-            message += `Saya berminat untuk bertanyakan tentang model *Perodua ${model}* untuk tujuan *${purpose}*.\n\n`;
-            
-            if(notes.trim() !== "") {
-                message += `*Nota Tambahan:* ${notes}\n\n`;
-            }
-            
-            message += `Boleh bantu berikan pencerahan lanjut? Terima kasih.`;
-            
-            openWA(message);
-        }
-
-        // --- 5. SCROLL ANIMATIONS (Intersection Observer) ---
-        // Respect user's reduced motion preference
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // FAQ Accordion
+    function toggleFaq(button) {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
         
-        if (!prefersReducedMotion) {
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+            if (btn.parentElement) btn.parentElement.classList.remove('active');
+            if (btn.nextElementSibling) btn.nextElementSibling.style.maxHeight = null;
+        });
 
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Run animation only once
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealOnScroll.observe(el);
-            });
-        } else {
-            // If reduced motion is preferred, show elements immediately
-            document.querySelectorAll('.reveal').forEach(el => {
-                el.style.opacity = "1";
-                el.style.transform = "none";
-                el.classList.remove('reveal');
-            });
+        if (!isExpanded) {
+            button.setAttribute('aria-expanded', 'true');
+            if (button.parentElement) button.parentElement.classList.add('active');
+            const content = button.nextElementSibling;
+            if (content) content.style.maxHeight = content.scrollHeight + "px";
         }
-    </script>
+    }
+
+    // --- 4. FORM HANDLING ---
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        const nameEl = document.getElementById('fname');
+        const modelEl = document.getElementById('fmodel');
+        const purposeEl = document.getElementById('fpurpose');
+        const notesEl = document.getElementById('fnotes');
+
+        const name = nameEl ? nameEl.value : '';
+        const model = modelEl ? modelEl.value : '';
+        const purpose = purposeEl ? purposeEl.value : '';
+        const notes = notesEl ? notesEl.value : '';
+        
+        let message = `Assalamualaikum Haziq, saya ${name}.\n\n`;
+        message += `Saya berminat untuk bertanyakan tentang model *Perodua ${model}* untuk tujuan *${purpose}*.\n\n`;
+        
+        if (notes.trim() !== "") {
+            message += `*Nota Tambahan:* ${notes}\n\n`;
+        }
+        
+        message += `Boleh bantu berikan pencerahan lanjut? Terima kasih.`;
+        
+        openWA(message);
+    }
+
+    // --- 5. SCROLL ANIMATIONS ---
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion) {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "1";
+            el.style.transform = "none";
+            el.classList.remove('reveal');
+        });
+    }
+</script>
 </body>
 </html>
