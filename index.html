@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haziq | Perunding Jualan Kereta Perodua</title>
+    <meta name="description" content="Dapatkan khidmat nasihat, semak harga, promosi terkini dan uruskan pembelian kereta Perodua anda dengan mudah bersama Haziq.">
+    <meta name="keywords" content="Sales Advisor Perodua, Kereta Perodua, Harga kereta Perodua, Pilihan model Perodua, Pertanyaan kereta Perodua, Haziq Perodua">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Haziq | Perunding Jualan Kereta Perodua">
+    <meta property="og:description" content="Mudahkan urusan pembelian kereta Perodua anda bersama Haziq. Semak model, harga dan promosi.">
+    <meta property="og:image" content="SA.png">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="YOUR_WEBSITE_URL">
+    <link rel="icon" href="YOUR_FAVICON.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Colors */
+            --perodua-red: #e3000f;
+            --perodua-red-dark: #b30009;
+            --perodua-red-light: #ffebec;
+            --charcoal: #2b2b2b;
+            --charcoal-light: #4a4a4a;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --border-color: #e5e7eb;
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing & Radius */
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-red: 0 10px 25px -5px rgba(227, 0, 15, 0.3);
+            
+            /* Layout */
+            --container-width: 1200px;
+            --section-padding: 5rem 1.5rem;
+            
+            /* Global WA Number (JS will use this, but good to have note here) */
+            --wa-number: "YOUR_WHATSAPP_NUMBER"; 
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background-color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--charcoal-light);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--charcoal);
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--perodua-red);
+            color: var(--white);
+            box-shadow: var(--shadow-red);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--perodua-red-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--charcoal);
+            border-color: var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--charcoal);
+            background-color: var(--off-white);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-sm);
+            border-bottom-color: var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--perodua-red);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--charcoal);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--charcoal-light);
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--perodua-red);
+        }
+
+        .nav-actions {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--charcoal);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-150%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            font-weight: 600;
+            font-size: 1.125rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            /* Ditambah: Latar belakang gambar susunan kereta dengan overlay separa telus */
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.85) 0%, rgba(255, 255, 255, 0.95) 100%), 
+                        url('image1.png') center/cover no-repeat;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .label-badge {
+            display: inline-block;
+            background-color: var(--perodua-red-light);
+            color: var(--perodua-red);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.35rem 1rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span {
+            color: var(--perodua-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .trust-indicators {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--charcoal-light);
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--perodua-red);
+            stroke-width: 2;
+        }
+
+        /* Hero Image - Critical Instructions */
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 400px; /* Adjust based on photo */
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--perodua-red-light) 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            z-index: 1;
+            box-shadow: inset 0 10px 20px rgba(227, 0, 15, 0.05);
+            border: 1px solid rgba(227, 0, 15, 0.1);
+            border-bottom: none;
+        }
+
+        .sa-photo {
+            position: relative;
+            z-index: 2;
+            max-height: 110%;
+            width: auto;
+            object-fit: contain;
+            bottom: 0;
+            filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
+            /* Placeholder styling if image is missing */
+            min-width: 250px;
+        }
+
+        .trust-strip {
+            padding: 2rem 0;
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+
+        .trust-strip-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .strip-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .strip-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--white);
+        }
+
+        .strip-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .about {
+            padding: var(--section-padding);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background-color: var(--off-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/5;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .value-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-icon {
+            background: var(--perodua-red-light);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .value-icon svg {
+            stroke: var(--perodua-red);
+            width: 24px;
+            height: 24px;
+        }
+
+        .value-text h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.125rem;
+        }
+        
+        .value-text p {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .models {
+            padding: var(--section-padding);
+            background-color: var(--off-white);
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .model-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .model-image-wrapper {
+            position: relative;
+            padding-top: 60%; /* Aspect ratio */
+            background-color: #f0f0f0; /* Light gray bg for images */
+        }
+
+        .model-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* or contain depending on provided images */
+        }
+
+        .model-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: var(--charcoal);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .model-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .model-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-desc {
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .model-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .needs {
+            padding: var(--section-padding);
+        }
+
+        .needs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .need-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .need-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--perodua-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .need-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+
+        .need-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .need-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--off-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .need-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--charcoal);
+        }
+
+        .need-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .need-card p {
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .need-card .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1.25rem;
+        }
+
+        .process {
+            padding: var(--section-padding);
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+
+        .process .section-title h2, 
+        .process .section-title p {
+            color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: rgba(255,255,255,0.1);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            margin-left: -1px;
+        }
+
+        .timeline-step {
+            padding: 1.5rem 0 1.5rem 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background-color: var(--perodua-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 0 0 4px var(--charcoal);
+        }
+
+        .timeline-step h3 {
+            color: var(--white);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-step p {
+            color: #a0aec0; /* Lighter text for dark bg */
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .promo {
+            padding: var(--section-padding);
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, var(--perodua-red) 0%, var(--perodua-red-dark) 100%);
+            border-radius: var(--radius-lg);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-red);
+        }
+
+        .promo-card h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-card p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .promo-card .btn {
+            background: var(--white);
+            color: var(--perodua-red);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .promo-card .btn:hover {
+            background: var(--off-white);
+        }
+
+        .financing {
+            padding: var(--section-padding);
+            background: var(--off-white);
+        }
+        
+        .finance-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .finance-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--perodua-red);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .finance-card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .finance-card p {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .faq {
+            padding: var(--section-padding);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 1.5rem;
+            color: var(--charcoal-light);
+        }
+
+        .inquiry {
+            padding: var(--section-padding);
+            background: var(--off-white);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--perodua-red);
+            box-shadow: 0 0 0 3px rgba(227, 0, 15, 0.1);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-notice {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .final-cta {
+            padding: 6rem 1.5rem;
+            text-align: center;
+            background-color: var(--perodua-red);
+            color: var(--white);
+        }
+
+        .final-cta h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .final-cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .final-cta .btn-primary {
+            background: var(--white);
+            color: var(--perodua-red);
+            box-shadow: none;
+        }
+        
+        .final-cta .btn-outline {
+            border-color: rgba(255,255,255,0.5);
+            color: var(--white);
+        }
+        
+        .final-cta .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #a0aec0;
+            padding: 4rem 0 2rem;
+            font-size: 0.875rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-disclaimer {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: #718096;
+        }
+        
+        .footer-disclaimer p {
+            color: inherit;
+            margin-bottom: 0.5rem;
+        }
+
+        .float-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .float-wa:hover {
+            transform: scale(1.1);
+        }
+        
+        .float-wa::before {
+            content: 'Tanya Haziq';
+            position: absolute;
+            right: 70px;
+            background: var(--white);
+            color: var(--charcoal);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .float-wa:hover::before {
+            opacity: 1;
+        }
+
+        .float-wa svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .hero-cta {
+                flex-direction: row;
+            }
+            .hero-image-wrapper {
+                height: 500px;
+            }
+            .trust-strip-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .value-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .models-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .needs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline::after {
+                left: 50%;
+            }
+            .timeline-step {
+                width: 50%;
+                padding: 0 3rem 2rem 0;
+            }
+            .timeline-step:nth-child(even) {
+                margin-left: 50%;
+                padding: 0 0 2rem 3rem;
+            }
+            .step-number {
+                left: auto;
+                right: -20px;
+            }
+            .timeline-step:nth-child(even) .step-number {
+                right: auto;
+                left: -20px;
+            }
+            .finance-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .final-cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links, .nav-actions {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: none;
+            }
+            .models-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .needs-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">HAZIQ<span>Perodua</span></a>
+            
+            <nav class="nav-links">
+                <a href="#kenali">Kenali Haziq</a>
+                <a href="#model">Model Perodua</a>
+                <a href="#proses">Proses</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat untuk mengetahui lebih lanjut tentang kereta Perodua.')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Tanya Haziq
+                </button>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMenu()">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#kenali" onclick="toggleMenu()">Kenali Haziq</a>
+        <a href="#model" onclick="toggleMenu()">Model Perodua</a>
+        <a href="#proses" onclick="toggleMenu()">Proses Pembelian</a>
+        <a href="#pembiayaan" onclick="toggleMenu()">Info Pembiayaan</a>
+        <a href="#faq" onclick="toggleMenu()">FAQ</a>
+        <button class="btn btn-primary btn-full" onclick="openWA('Assalamualaikum Haziq, saya berminat untuk mengetahui lebih lanjut tentang kereta Perodua.'); toggleMenu()">Hubungi WhatsApp</button>
+    </div>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content reveal">
+                    <div class="label-badge">Perodua Sales Advisor</div>
+                    <h1 class="hero-title">Kereta Pilihan Anda, <span>Lebih Mudah</span> Bersama Haziq.</h1>
+                    <p class="hero-subtitle">Sedang mencari kereta Perodua untuk kegunaan harian, keluarga atau kereta pertama anda? Haziq sedia membantu anda mengenali pilihan model, mendapatkan maklumat harga dan memahami proses pembelian dengan lebih jelas.</p>
+                    
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya sedang mencari kereta Perodua. Boleh bantu saya?')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Tanya Haziq di WhatsApp
+                        </button>
+                        <a href="#model" class="btn btn-outline">Lihat Pilihan Model</a>
+                    </div>
+                    
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Bantuan Pemilihan Model
+                        </div>
+                        <div class="trust-item">
+                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Maklumat Pembelian Jelas
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image-wrapper reveal">
+                    <!-- WAJIB GANTI: SA.png - Gunakan imej background transparent -->
+                    <img src="SA.png" alt="Haziq - Perodua Sales Advisor" class="sa-photo">
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-strip">
+            <div class="container trust-strip-container">
+                <div class="strip-item">
+                    <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+                    <div class="strip-text">Bantuan Memilih<br>Model</div>
+                </div>
+                <div class="strip-item">
+                    <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                    <div class="strip-text">Penerangan Proses<br>Pembelian</div>
+                </div>
+                <div class="strip-item">
+                    <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+                    <div class="strip-text">Pertanyaan Harga<br>& Promosi</div>
+                </div>
+                <div class="strip-item">
+                    <div class="strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+                    <div class="strip-text">Hubungan Terus<br>Melalui WhatsApp</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="kenali">
+            <div class="container about-grid">
+                <div class="about-image reveal">
+                    <!-- GANTI: Placeholder imej gaya hidup Haziq -->
+                    <img src="SA.png" alt="Haziq melayani pelanggan" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22600%22%20height%3D%22800%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20800%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22600%22%20height%3D%22800%22%20fill%3D%22%23e2e8f0%22%2F%3E%3Ctext%20x%3D%22300%22%20y%3D%22400%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%2364748b%22%20text-anchor%3D%22middle%22%3EGAMBAR%20HAZIQ%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                </div>
+                <div class="about-content reveal">
+                    <h2>Bukan Sekadar Pilih Kereta, Fahami Pilihan Anda.</h2>
+                    <p>Setiap pelanggan mempunyai keperluan yang berbeza. Ada yang mencari kereta pertama, ada yang memerlukan ruang lebih luas untuk keluarga, dan ada juga yang mahukan kereta praktikal untuk kegunaan harian.</p>
+                    <p>Haziq sedia membantu anda memahami pilihan model Perodua, mendapatkan maklumat berkaitan pembelian dan mengetahui langkah seterusnya sebelum membuat keputusan.</p>
+                    
+                    <div class="value-cards">
+                        <div class="value-card">
+                            <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                            <div class="value-text">
+                                <h4>Mesra Pelanggan</h4>
+                                <p>Sedia mendengar keperluan anda.</p>
+                            </div>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></div>
+                            <div class="value-text">
+                                <h4>Penerangan Jelas</h4>
+                                <p>Maklumat telus tanpa selindung.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#model" class="btn btn-primary">Kenali Pilihan Anda</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="models" id="model">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Model Mana Yang Sesuai Dengan Anda?</h2>
+                    <p>Kenali pilihan model Perodua mengikut keperluan perjalanan, gaya hidup dan kegunaan harian anda.</p>
+                </div>
+                
+                <div class="models-grid">
+                    <!-- Axia -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">Kompak</div>
+                            <!-- GANTI: Imej kereta sebenar -->
+                            <img src="axia.jpeg" alt="Perodua Axia" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20AXIA%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Axia</h3>
+                            <p class="model-desc">Pilihan kereta kompak yang menjimatkan bahan api, sesuai untuk kegunaan harian dan pemanduan di bandar.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Axia. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Axia. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bezza -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">Sedan</div>
+                            <img src="bezza.jpg" alt="Perodua Bezza" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20BEZZA%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Bezza</h3>
+                            <p class="model-desc">Sedan praktikal dengan ruang but yang luas, sesuai untuk keluarga kecil atau pemanduan jarak jauh.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Bezza. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Bezza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Myvi -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">Hatchback</div>
+                            <img src="myvi.jpeg" alt="Perodua Myvi" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20MYVI%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Myvi</h3>
+                            <p class="model-desc">Hatchback serba guna yang dipercayai ramai, dilengkapi teknologi keselamatan moden untuk ketenangan minda.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Myvi. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Myvi. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ativa -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">Kompak SUV</div>
+                            <img src="ativa.jpeg" alt="Perodua Ativa" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20ATIVA%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Ativa</h3>
+                            <p class="model-desc">SUV kompak berkuasa turbo yang bergaya, menawarkan kedudukan memandu yang lebih tinggi dan selesa.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Ativa. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Ativa. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alza -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">MPV</div>
+                            <img src="alza.jpeg" alt="Perodua Alza" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20ALZA%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Alza</h3>
+                            <p class="model-desc">MPV keluarga dengan rekaan moden dan konfigurasi tempat duduk yang fleksibel untuk pelbagai kegunaan.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Alza. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Alza. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aruz -->
+                    <div class="model-card reveal">
+                        <div class="model-image-wrapper">
+                            <div class="model-tag">SUV 7-Tempat Duduk</div>
+                            <img src="aruz.jpg" alt="Perodua Aruz" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20240%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22400%22%20height%3D%22240%22%20fill%3D%22%23e5e7eb%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22120%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%236b7280%22%20text-anchor%3D%22middle%22%3EGAMBAR%20ARUZ%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                        </div>
+                        <div class="model-info">
+                            <h3 class="model-name">Perodua Aruz</h3>
+                            <p class="model-desc">SUV lasak 7-tempat duduk yang luas, dibina khas untuk perjalanan yang lebih mencabar dan seisi keluarga.</p>
+                            <div class="model-actions">
+                                <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Aruz. Boleh kongsikan senarai harga terkini?')">Tanya Harga</button>
+                                <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya berminat dengan Perodua Aruz. Boleh bantu terangkan lebih lanjut?')">Tanya Haziq</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="needs">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Mulakan Dengan Apa Yang Anda Perlukan.</h2>
+                    <p>Pilih kategori yang paling sesuai dengan matlamat anda untuk mendapatkan cadangan model yang tepat.</p>
+                </div>
+                
+                <div class="needs-grid">
+                    <div class="need-card reveal">
+                        <div class="need-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                        <h3>Kereta Pertama</h3>
+                        <p>Mahukan kereta sendiri untuk urusan harian? Kenali pilihan yang sesuai dengan keperluan dan perancangan anda.</p>
+                        <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya sedang mencari kereta pertama. Boleh cadangkan model Perodua yang sesuai?')">Bincang Dengan Haziq</button>
+                    </div>
+                    
+                    <div class="need-card reveal">
+                        <div class="need-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                        <h3>Untuk Keluarga</h3>
+                        <p>Perlukan ruang yang selesa untuk anak-anak, perjalanan bersama keluarga atau aktiviti pada hujung minggu?</p>
+                        <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya mencari kereta Perodua yang sesuai untuk keluarga. Boleh kongsikan pilihan?')">Bincang Dengan Haziq</button>
+                    </div>
+                    
+                    <div class="need-card reveal">
+                        <div class="need-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
+                        <h3>Kegunaan Harian</h3>
+                        <p>Cari pilihan yang praktikal, mudah dikendalikan dan menjimatkan untuk perjalanan ke tempat kerja setiap hari.</p>
+                        <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya perlukan kereta praktikal untuk kegunaan harian ke tempat kerja. Boleh bantu?')">Bincang Dengan Haziq</button>
+                    </div>
+                    
+                    <div class="need-card reveal">
+                        <div class="need-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 12h20"></path><path d="M2 12V7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5"></path><path d="M12 2v10"></path></svg></div>
+                        <h3>Ruang Lebih Luas</h3>
+                        <p>Bandingkan pilihan sedan, SUV atau MPV jika anda selalu membawa muatan atau mengutamakan keselesaan ruang.</p>
+                        <button class="btn btn-outline" onclick="openWA('Assalamualaikum Haziq, saya berminat nak tahu model Perodua yang ada ruang but atau kabin yang luas.')">Bincang Dengan Haziq</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" id="proses">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Dari Pertanyaan Hingga Proses Pembelian, Satu Langkah Pada Satu Masa.</h2>
+                    <p>Fahami perjalanan mudah anda untuk mendapatkan kereta Perodua baharu.</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-step reveal">
+                        <div class="step-number">1</div>
+                        <h3>Kenal Pasti Keperluan</h3>
+                        <p>Kongsi model yang diminati, kegunaan kereta dan anggaran bajet anda dengan Haziq untuk cadangan awal.</p>
+                    </div>
+                    <div class="timeline-step reveal">
+                        <div class="step-number">2</div>
+                        <h3>Dapatkan Maklumat</h3>
+                        <p>Haziq akan membantu memberikan maklumat spesifikasi model, harga semasa, pilihan pembelian dan promosi sah yang sedang berlangsung.</p>
+                    </div>
+                    <div class="timeline-step reveal">
+                        <div class="step-number">3</div>
+                        <h3>Semak Pembiayaan</h3>
+                        <p>Jika memerlukan pembiayaan, semak pilihan dan senarai dokumen yang diperlukan. Kelulusan adalah tertakluk pada penilaian pihak institusi kewangan.</p>
+                    </div>
+                    <div class="timeline-step reveal">
+                        <div class="step-number">4</div>
+                        <h3>Teruskan Urusan Pembelian</h3>
+                        <p>Setelah maklumat dan syarat difahami dengan jelas, anda boleh berbincang tentang langkah seterusnya untuk tempahan dan pendaftaran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="promo">
+            <div class="container">
+                <div class="promo-card reveal">
+                    <h3>Semak Tawaran Perodua Terkini.</h3>
+                    <p>Sedang mencari tawaran yang sesuai? Hubungi Haziq untuk menyemak senarai harga rasmi, promosi semasa dan maklumat pembelian terkini bagi model yang anda minati.</p>
+                    <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, boleh saya tahu jika ada apa-apa promosi atau tawaran terkini untuk kereta Perodua bulan ini?')">Semak Promosi di WhatsApp</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="financing" id="pembiayaan">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Perlukan Maklumat Tentang Pembiayaan Kereta?</h2>
+                    <p>Jika anda bercadang mendapatkan kereta melalui pembiayaan, fahami proses asas sebelum membuat permohonan.</p>
+                </div>
+                
+                <div class="finance-cards">
+                    <div class="finance-card reveal">
+                        <h4>Proses Permohonan</h4>
+                        <p>Ketahui langkah-langkah penghantaran dokumen kepada pihak bank dan garis masa kebiasaan untuk proses penilaian pembiayaan.</p>
+                    </div>
+                    <div class="finance-card reveal">
+                        <h4>Dokumen Diperlukan</h4>
+                        <p>Dapatkan senarai dokumen asas (seperti IC, lesen, slip gaji, penyata bank) berdasarkan status pekerjaan anda (makan gaji atau berniaga).</p>
+                    </div>
+                    <div class="finance-card reveal">
+                        <h4>Semakan Pilihan</h4>
+                        <p>Bincangkan pilihan tempoh pembiayaan dan anggaran bayaran bulanan berdasarkan maklumat harga terkini sebelum anda memohon.</p>
+                    </div>
+                </div>
+                
+                <div class="text-center reveal" style="text-align: center;">
+                    <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya ingin bertanya tentang proses dan dokumen yang diperlukan untuk permohonan pembiayaan kereta Perodua.')">Tanya Tentang Pembiayaan</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="inquiry" id="borang">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Borang Pertanyaan Pantas</h2>
+                    <p>Isi maklumat ringkas di bawah. Sistem akan menjana mesej WhatsApp automatik untuk dihantar kepada Haziq.</p>
+                </div>
+                
+                <div class="form-container reveal">
+                    <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="fname">Nama Anda</label>
+                            <input type="text" id="fname" class="form-control" required placeholder="Contoh: Ahmad Firdaus">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fmodel">Model Yang Diminati</label>
+                            <select id="fmodel" class="form-control" required>
+                                <option value="" disabled selected>Pilih Model</option>
+                                <option value="Axia">Perodua Axia</option>
+                                <option value="Bezza">Perodua Bezza</option>
+                                <option value="Myvi">Perodua Myvi</option>
+                                <option value="Ativa">Perodua Ativa</option>
+                                <option value="Alza">Perodua Alza</option>
+                                <option value="Aruz">Perodua Aruz</option>
+                                <option value="Belum Pasti">Belum Pasti - Perlu Khidmat Nasihat</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fpurpose">Tujuan Pembelian</label>
+                            <select id="fpurpose" class="form-control" required>
+                                <option value="" disabled selected>Pilih Tujuan</option>
+                                <option value="Kereta Pertama">Kereta Pertama</option>
+                                <option value="Kegunaan Keluarga">Kegunaan Keluarga</option>
+                                <option value="Urusan Harian / Kerja">Urusan Harian / Kerja</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fnotes">Nota Tambahan / Pertanyaan (Pilihan)</label>
+                            <textarea id="fnotes" class="form-control" placeholder="Contoh: Saya ingin tahu tentang trade-in atau anggaran bulanan..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Jana Mesej WhatsApp</button>
+                        <p class="form-notice">Maklumat di atas tidak disimpan dalam pangkalan data. Ia hanya digunakan untuk memudahkan penyediaan mesej WhatsApp anda kepada Haziq.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Soalan Yang Selalu Ditanya</h2>
+                </div>
+                
+                <div class="faq-container reveal">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1" onclick="toggleFaq(this)">
+                            Bagaimana saya boleh mendapatkan maklumat harga kereta?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer" id="faq1">
+                            <div class="faq-answer-inner">
+                                Anda boleh menghubungi saya terus melalui WhatsApp. Saya akan kongsikan senarai harga rasmi terkini mengikut varian untuk model yang anda minati.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2" onclick="toggleFaq(this)">
+                            Bagaimana saya memilih model Perodua yang sesuai?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer" id="faq2">
+                            <div class="faq-answer-inner">
+                                Pemilihan bergantung kepada saiz keluarga, kegunaan harian dan bajet anda. Kongsikan keperluan anda di WhatsApp, dan saya akan bantu bandingkan kelebihan setiap model agar anda dapat membuat pilihan yang tepat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3" onclick="toggleFaq(this)">
+                            Apakah dokumen yang diperlukan untuk permohonan pembiayaan?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer" id="faq3">
+                            <div class="faq-answer-inner">
+                                Secara umumnya untuk individu bekerja (makan gaji): Salinan Kad Pengenalan, Lesen Memandu, Slip Gaji 3 bulan terkini dan Penyata Bank 3 bulan terkini. Untuk yang berniaga, dokumen tambahan seperti pendaftaran SSM dan penyata bank syarikat diperlukan.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4" onclick="toggleFaq(this)">
+                            Adakah permohonan pembiayaan dijamin lulus?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer" id="faq4">
+                            <div class="faq-answer-inner">
+                                Tidak. Sebarang kelulusan pembiayaan adalah tertakluk sepenuhnya pada prosedur, terma dan syarat, serta penilaian kredit oleh pihak institusi kewangan (bank) yang dipilih.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq5" onclick="toggleFaq(this)">
+                            Bagaimana saya boleh mengetahui status stok dan tempoh menunggu?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer" id="faq5">
+                            <div class="faq-answer-inner">
+                                Tempoh menunggu dan ketersediaan stok berbeza mengikut model dan varian. Sila hubungi saya melalui WhatsApp untuk mendapatkan pengesahan dan anggaran terkini.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta reveal">
+            <div class="container">
+                <h2>Sedang Merancang Untuk Memiliki Kereta Perodua?</h2>
+                <p>Tak pasti model mana yang sesuai atau perlukan maklumat lanjut? Mulakan dengan perbualan ringkas bersama Haziq untuk mendapatkan pencerahan sebelum membuat keputusan.</p>
+                <div class="final-cta-buttons">
+                    <button class="btn btn-primary" onclick="openWA('Assalamualaikum Haziq, saya sedang merancang untuk membeli kereta Perodua. Boleh berikan saya maklumat lanjut?')">WhatsApp Haziq Sekarang</button>
+                    <a href="#model" class="btn btn-outline">Lihat Pilihan Model</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>HAZIQ</h4>
+                    <p style="margin-bottom: 1rem; color: #a0aec0;">Sales Advisor Perodua</p>
+                    <p style="font-size: 0.875rem;">Membantu anda mendapatkan maklumat telus dan menguruskan proses pembelian kereta Perodua dengan lebih mudah.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Pautan Pantas</h4>
+                    <div class="footer-links">
+                        <a href="#home">Utama</a>
+                        <a href="#kenali">Kenali Haziq</a>
+                        <a href="#model">Model Perodua</a>
+                        <a href="#proses">Proses Pembelian</a>
+                        <a href="#borang">Borang Pertanyaan</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Pilihan Model</h4>
+                    <div class="footer-links">
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Axia')">Perodua Axia</a>
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Bezza')">Perodua Bezza</a>
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Myvi')">Perodua Myvi</a>
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Ativa')">Perodua Ativa</a>
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Alza')">Perodua Alza</a>
+                        <a href="javascript:void(0)" onclick="openWA('Hi Haziq, berminat info Aruz')">Perodua Aruz</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Hubungi</h4>
+                    <div class="footer-links">
+                        <!-- GANTI: Placeholder lokasi showroom -->
+                        <p><strong>Bilik Pameran:</strong><br>SA PERODUA CHERAS<br>Kuala Lumpur, Malaysia</p>
+                        <button class="btn btn-outline" style="border-color: #4a5568; color: #cbd5e1; padding: 0.5rem 1rem; margin-top: 0.5rem; justify-content: flex-start;" onclick="openWA('Assalamualaikum Haziq.')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="footer-disclaimer">
+                    <p><strong>Penafian:</strong> Maklumat harga, promosi, spesifikasi, ketersediaan model dan pakej pembiayaan yang dipaparkan adalah tertakluk pada pengesahan semasa dan boleh berubah tanpa notis. Kelulusan pembiayaan bergantung sepenuhnya pada penilaian institusi kewangan yang terlibat.</p>
+                    <p>Website ini merupakan halaman pemasaran yang diuruskan oleh Perunding Jualan. Penggunaan nama dan jenama Perodua adalah bagi tujuan pengenalan produk sahaja.</p>
+                    <p style="margin-top: 1rem; text-align: center;">&copy; <span id="year"></span> Haziq Sales Advisor. Semua Hak Cipta Terpelihara.</p>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="javascript:void(0)" class="float-wa" aria-label="WhatsApp Haziq" onclick="openWA('Assalamualaikum Haziq, saya sedang layari website anda dan ingin bertanya tentang kereta Perodua.')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        // GANTI NOMBOR INI KEPADA NOMBOR SEBENAR TANPA SIMBOL '+' ATAU SENGKANG. CONTOH: 60123456789
+        const waNumber = "60123456789"; 
+
+        // --- 2. WHATSAPP HELPER ---
+        function openWA(message) {
+            const encodedMessage = encodeURIComponent(message);
+            const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+            window.open(url, '_blank');
+        }
+
+        // --- 3. UI INTERACTIONS ---
+        // Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Current Year for Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Accordion
+        function toggleFaq(button) {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // Close all open FAQs (optional: remove this loop if you want multiple open at once)
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.setAttribute('aria-expanded', 'false');
+                btn.parentElement.classList.remove('active');
+                btn.nextElementSibling.style.maxHeight = null;
+            });
+
+            // Toggle current
+            if (!isExpanded) {
+                button.setAttribute('aria-expanded', 'true');
+                button.parentElement.classList.add('active');
+                const content = button.nextElementSibling;
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        // --- 4. FORM HANDLING ---
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            const name = document.getElementById('fname').value;
+            const model = document.getElementById('fmodel').value;
+            const purpose = document.getElementById('fpurpose').value;
+            const notes = document.getElementById('fnotes').value;
+            
+            let message = `Assalamualaikum Haziq, saya ${name}.\n\n`;
+            message += `Saya berminat untuk bertanyakan tentang model *Perodua ${model}* untuk tujuan *${purpose}*.\n\n`;
+            
+            if(notes.trim() !== "") {
+                message += `*Nota Tambahan:* ${notes}\n\n`;
+            }
+            
+            message += `Boleh bantu berikan pencerahan lanjut? Terima kasih.`;
+            
+            openWA(message);
+        }
+
+        // --- 5. SCROLL ANIMATIONS (Intersection Observer) ---
+        // Respect user's reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!prefersReducedMotion) {
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run animation only once
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+        } else {
+            // If reduced motion is preferred, show elements immediately
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.style.opacity = "1";
+                el.style.transform = "none";
+                el.classList.remove('reveal');
+            });
+        }
+    </script>
+</body>
+</html>
